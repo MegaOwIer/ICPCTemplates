@@ -1,0 +1,64 @@
+name: AutoRelease
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v3.1.1
+        with:
+          python-version: 3.x
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+      - name: Run generator
+        working-directory: ./generator
+        run: python3 gen.py
+      - name: LaTeX compilation #1
+        uses: dante-ev/latex-action@2021-A
+        with: 
+          root_file: template.tex
+          working_directory: ./generator
+          compiler: xelatex
+      - name: LaTeX compilation #2
+        uses: dante-ev/latex-action@2021-A
+        with: 
+          root_file: template.tex
+          working_directory: ./generator
+          compiler: xelatex
+      - name: create tag
+        id: create_tag
+        run: |
+          tag_name=$(TZ="Asia/Shanghai" date +"v%Y.%m")
+          if [[ -n "${{github.event.inputs.tag_name}}" ]]; then tag_name=${{github.event.inputs.tag_name}}; fi
+          git tag $tag_name
+          git push --tags
+          echo "::set-output name=tag_name::$tag_name"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.create_tag.outputs.tag_name }}
+          release_name: Release ${{ steps.create_tag.outputs.tag_name }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload_release_asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./generator/template.pdf
+          asset_name: template.pdf
+          asset_content_type: application/pdf
