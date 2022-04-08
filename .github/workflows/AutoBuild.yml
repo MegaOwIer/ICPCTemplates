@@ -34,9 +34,15 @@ jobs:
           root_file: template.tex
           working_directory: ./generator
           compiler: xelatex
-      - name: Move PDF to root and Push
-        run: |
-          cp generator/template.tex template.tex
-          git add template.tex
-          git commit -m "Auto Build"
-          git push
+      - name: Move PDF to root
+        run: cp generator/template.tex template.tex
+      - name: Git Push
+        uses: pkg-src/github-action-git-bash@v1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        with: 
+            args: |
+              git add template.tex
+              git commit -m "Auto Build"
+              git push
