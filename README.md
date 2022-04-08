@@ -8,6 +8,8 @@ ICPC 比赛用模板及自动生成工具。
 
 每个 section 对应目录下的 `_config.yml` 配置对应章节下的 subsection 和（或） subsubsection。
 
+**注意：** 所有 `_config.yml` 文件中的路径应使用相对路径。
+
 准备好代码后进入 `generator/` 目录，运行
 
 ```sh
