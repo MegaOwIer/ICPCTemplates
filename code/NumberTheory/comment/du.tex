@@ -1,0 +1,5 @@
+构造数论函数 $g(x)$ 使得 Dirichlet 卷积 $S=f*g$ 的前缀和可以很快求出。记 $F(n)=\sum_{i=1}^n f(i)$，则有
+
+$$
+g(1)F(N) = \sum_{i=1}^{N} S(i) - \sum_{i=2}^{N} g(i)F( \lfloor N/i \rfloor )
+$$

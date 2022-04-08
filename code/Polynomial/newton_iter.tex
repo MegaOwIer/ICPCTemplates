@@ -1,0 +1,9 @@
+对于多项式方程
+$$
+G(F(x)) \equiv 0 \pmod{x^n}
+$$
+可以用倍增法求解
+$$
+F(x) \equiv F_0 (x) - \frac{G(F_0 (x))}{G' (F_0 (x)) }  \pmod{x^n}
+$$
+其中 $F_0 (x)$ 是原方程在模 $x^{ \lceil n/2 \rceil }$ 下的解。

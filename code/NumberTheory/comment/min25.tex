@@ -1,0 +1,21 @@
+记 $S(x)$ 表示 $x$ 的最小素因子，则有
+
+$$
+\sum_{i=1}^{N}f(i) = 1 + \sum_{p \leq \sqrt{n}, \ p^e \leq N} f(p^e) \left( 
+    1 + \sum_{x \leq N/p^e, \ S(x) > p} f(x)
+\right)
+$$
+
+再令
+$$
+h_n = \sum_{p \leq n} f(p) \qquad g_{n,m} = \sum_{x \leq n, \ S(x)>m} f(x)
+$$
+为了计算 $h_n$，令 $F_{i,j}$ 表示 $[2,j]$ 范围内执行 Eratosthenes 筛法，没有被前 $i$ 个素数筛去的所有数的 $k$ 次幂和。对于 $j \geq p_i^2$ 有
+$$
+F_{i,j}=F_{i-1,j}-p_i^k \left( F_{i-1,j/p_i}-F_{i-1,p_i-1} \right)
+$$
+其他情况下有 $F_{i,j}=F_{i-1,j}$。同时注意到
+$$
+g_{n,m}= \sum_{m<p \leq \sqrt{n} , \ p^e \leq n} f(p^e) \left( 1 + g_{n/p^e ,p} \right) + h_n - h_{\sqrt{n}}
+$$
+按照上述式子暴力递归计算即可。

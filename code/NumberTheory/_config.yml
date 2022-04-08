@@ -1,0 +1,16 @@
+subsections:
+  - title: Baby-step Giant-step
+    code: bsgs.cpp
+    after: comment/bsgs.tex
+  - title: Cipolla（模素数的二次剩余）
+    code: cipolla.cpp
+    after: comment/cipolla.tex
+  - title: MillarRabin 和 PollardRho
+    code: MillarRabin-PollardRho.cpp
+    after: comment/mrpr.tex
+  - title: 扩展欧几里得
+    code: exgcd.cpp
+  - title: 杜教筛
+    before: comment/du.tex
+  - title: Min\_25 筛
+    before: comment/min25.tex

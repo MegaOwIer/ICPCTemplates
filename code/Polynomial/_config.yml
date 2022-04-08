@@ -1,0 +1,10 @@
+subsections:
+  - title: NTT
+    code: ntt.cpp
+  - title: FFT under Arbitary Modulu
+    code: fft_arbitary.cpp
+  - title: Newton 迭代法
+    before: newton_iter.tex
+  - title: 高维 DFT 变换矩阵的构造
+    code: general_dft.cpp
+    after: dft.tex

@@ -1,0 +1,11 @@
+sections:
+  - title: Number Theory
+    dir: NumberTheory
+  - title: Polynomial Operations
+    dir: Polynomial
+  - title: Graph
+    dir: Graph
+  - title: Strings
+    dir: String
+  - title: Data Structures
+    dir: DataStructure

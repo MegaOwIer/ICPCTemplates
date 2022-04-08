@@ -1,0 +1,27 @@
+subsections:
+  - title: 欧拉回路
+    subsubsections:
+      - title: 有向图版本
+        code: EulerDirected.cpp
+      - title: 无向图版本
+        code: EulerUndirected.cpp
+  - title: 网络流
+    subsubsections:
+      - title: 最大流 HLPP (Highest Label Preflow Push)
+        code: NetworkFlow/hlpp.cpp
+      - title: 最大流 ISAP (Improved Shortest Augmenting Path)
+        code: NetworkFlow/isap.cpp
+      - title: 最大流 Dinic
+        code: NetworkFlow/dinic.cpp
+      - title: 最小费用最大流 EK
+        code: NetworkFlow/mcmf_ek.cpp
+      - title: 最小费用最大流 EK+Johnson
+        code: NetworkFlow/mcmf_dij.cpp
+      - title: 最小费用最大流 Capacity Scaling
+        code: NetworkFlow/mcmf_cs.cpp
+  - title: 二分图最大权匹配 KM
+    code: Matching/km.cpp
+  - title: 一般图最大匹配（带花树）
+    code: Matching/blossom.cpp
+  - title: 弦图的判定及消除序列求解
+    code: ChordalGraph.cpp

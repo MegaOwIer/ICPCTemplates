@@ -1,0 +1,4 @@
+generator/template.*
+!generator/template.tex
+
+generator/content.tex
